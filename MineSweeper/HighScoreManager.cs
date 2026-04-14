@@ -80,7 +80,7 @@ public class HighScoreManager
         }
         catch (IOException ex)
         {
-            Console.Error.WriteLine($"[Warning] Could not load high scores: {ex.Message}");
+            System.Console.WriteLine($"[Warning] Could not load high scores: {ex.Message}");
         }
     }
 
@@ -104,7 +104,7 @@ public class HighScoreManager
         }
         catch (IOException ex)
         {
-            Console.Error.WriteLine($"[Warning] Could not save high scores: {ex.Message}");
+            System.Console.WriteLine($"[Warning] Could not save high scores: {ex.Message}");
         }
     }
 }

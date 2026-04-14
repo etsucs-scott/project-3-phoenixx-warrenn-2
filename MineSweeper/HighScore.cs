@@ -14,13 +14,13 @@ public class HighScore
 
     // serialisation
 
-    /// render this entry as one CSV row (no header)
+    // render this entry as one CSV row (no header)
     public override string ToString() =>
         $"{(int)Size},{Seconds},{Moves},{Seed},{Timestamp:O}";
 
     
-    /// parse a CSV row produced by <see cref="ToString"/>
-    /// returns on any parse failure so callers can safely skip bad lines
+    // parse a CSV row produced by <see cref="ToString"/>
+    // returns on any parse failure so callers can safely skip bad lines
     
     public static HighScore? FromCsv(string line)
     {
