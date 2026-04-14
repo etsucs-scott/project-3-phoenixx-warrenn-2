@@ -9,7 +9,7 @@ using Xunit;
 
 public class BoardTests
 {
-    // ── 1. mine counts per board size 
+    // 1: mine counts per board size 
 
     [Fact]
     public void SmallBoard_Has_Exactly10Mines()
@@ -32,7 +32,7 @@ public class BoardTests
         Assert.Equal(40, CountMines(board));
     }
 
-    // ── 2. determinism 
+    // 2: determinism 
 
     [Fact]
     public void SameSeed_AlwaysProduces_SameBoard()
@@ -61,7 +61,7 @@ public class BoardTests
         Assert.True(anyDifference, "Seeds 1 and 999 should produce different layouts.");
     }
 
-    // ── 3. Adjacency
+    // 3: Adjacency
 
     [Fact]
     public void AdjacentMineCounts_AreCorrect_ForAllCells()
@@ -80,7 +80,7 @@ public class BoardTests
             }
     }
 
-    // ── 4. reveal mechanics
+    // 4: reveal mechanics
 
     [Fact]
     public void RevealMine_Returns_False()
@@ -119,7 +119,7 @@ public class BoardTests
             "A flagged cell must not be revealed until the flag is removed.");
     }
 
-    // ── 5. flagging
+    // 5: flagging
 
     [Fact]
     public void ToggleFlag_SetsAndClearsFlag()
@@ -146,21 +146,21 @@ public class BoardTests
             "An already-revealed cell must not be flaggable.");
     }
 
-    // ── 6. cascade reveal
+    // 6: cascade reveal
 
     [Fact]
     public void CascadeReveal_OpensNeighbors_WhenAdjacencyIsZero()
     {
         var board = new Board(BoardSize.Small, seed: 42);
 
-        // Find a zero-adjacency safe cell to trigger cascade
+        // find a zero-adjacency safe cell to trigger cascade
         var zeroCell = FindFirstOrNull(board, cell => !cell.IsMine && cell.AdjacentMines == 0);
         if (zeroCell is null) return; // seed has no zero cells — skip gracefully
 
         var (r, c) = zeroCell.Value;
         board.Reveal(r, c);
 
-        // At least one neighbor must also be revealed because of the cascade
+        // at least one neighbor must also be revealed because of the cascade
         int revealedNeighbors = 0;
         for (int dr = -1; dr <= 1; dr++)
             for (int dc = -1; dc <= 1; dc++)
@@ -175,7 +175,7 @@ public class BoardTests
             "Revealing a zero-adjacent cell should cascade to its neighbors.");
     }
 
-    // ── 7. win / loss via Game wrapper 
+    // 7: win / loss via Game wrapper 
 
     [Fact]
     public void Game_TransitionsTo_Won_WhenAllSafeCellsRevealed()
