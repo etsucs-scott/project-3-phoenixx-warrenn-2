@@ -1,3 +1,5 @@
 <Solution>
+  <Project Path="MineSweeper.Console/MineSweeper.Console.csproj" Id="d2b759cf-52a9-4a5e-b48a-a65788fcc50d" />
+  <Project Path="MineSweeper.Tests/MineSweeper.Tests.csproj" Id="c8f48fbe-6722-4845-9138-456e5105a313" />
   <Project Path="MineSweeper/MineSweeper.csproj" Id="b6a2dafb-a4aa-487f-a00f-720298771444" />
 </Solution>
